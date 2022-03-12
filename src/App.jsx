@@ -1,11 +1,13 @@
 import "./App.css";
-import { Card } from "./components/Card";
+import { Back } from "./components/Back";
+import { Cards } from "./components/Cards";
 
 function App() {
   return (
     <div className="App">
       <h1 className="text-center">app</h1>
-      <Card />
+      <Back />
+      <Cards />
     </div>
   );
 }
