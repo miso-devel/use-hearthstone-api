@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import back from "../json-data/back.json";
+import image from "../image/back1.png";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
   const [backs, setBacks] = useState([]);
@@ -19,6 +20,7 @@ export const Back = () => {
       setBacks(back);
     }
   }, []);
+  console.log(back.image);
 
   return (
     <div className="m-10">
@@ -27,7 +29,7 @@ export const Back = () => {
         <div className="grid grid-cols-1 p-5">
           <p className="py-5 text-center">{other ? backs.name : back.name}</p>
           <p className="py-3">{other ? backs.text : back.text}</p>
-          <img src={other ? backs.image : back.image} alt="" />
+          <img src={other ? backs.image : image} alt="" />
         </div>
       </div>
     </div>
