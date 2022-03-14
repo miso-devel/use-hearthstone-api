@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <h1 className="text-center">app</h1>
       <Back />
-      {/* <Cards /> */}
+      <Cards />
     </div>
   );
 }
