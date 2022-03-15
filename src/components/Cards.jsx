@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import jsonCard from "../json-data/cards.json";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Cards = () => {
   const [cards, setCards] = useState([]);
+
   useEffect(() => {
     axios
       .get(
-        `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&access_token=${APIKEY}`
+        `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&manaCost=3&collectible=1&gameMode=constructed&order (deprecated)=desc&access_token=${APIKEY}`
       )
       .then((res) => {
         setCards(res.data);
       });
   }, []);
 
-  console.log(cards);
+  console.log(cards.cards[1]);
 
   return (
     <div className="m-10">
