@@ -20,7 +20,6 @@ export const Back = () => {
       setBacks(back);
     }
   }, []);
-  console.log(back.image);
 
   return (
     <div className="m-10">

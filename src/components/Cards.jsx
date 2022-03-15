@@ -11,20 +11,23 @@ export const Cards = () => {
         `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&manaCost=3&collectible=1&gameMode=constructed&order (deprecated)=desc&access_token=${APIKEY}`
       )
       .then((res) => {
-        setCards(res.data);
+        console.log(res.data.cards);
+        setCards(res.data.cards);
       });
   }, []);
-
-  console.log(cards.cards[1]);
-
+  console.log(cards[0]);
   return (
     <div className="m-10">
       <h1 className="text-center font-bold">CARD</h1>
       <div className="res_card grid grid-cols-4">
-        <div className="grid grid-cols-1 p-5">
-          <p className="py-5 text-center"></p>
-          <p className="py-3"></p>
-        </div>
+        {cards.map((c) => {
+          return (
+            <div className="grid grid-cols-1 p-5">
+              <p className="py-5 text-center">{c.id}</p>
+              <p className="py-3"></p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
