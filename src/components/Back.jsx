@@ -11,7 +11,7 @@ export const Back = () => {
     if (other) {
       axios
         .get(
-          `https://us.api.blizzard.com/hearthstone/cardbacks/155-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
+          `https://us.api.blizzard.com/hearthstone/cardbacks/153-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
         )
         .then((res) => {
           setBacks(res.data);
