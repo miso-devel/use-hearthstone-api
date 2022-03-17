@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const APIKEY = process.env.React_APP_SEARCH_CARD_API_KEY;
+const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Cards = () => {
   const [cards, setCards] = useState([]);
   const [attack, setAttack] = useState(1);

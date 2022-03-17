@@ -13,7 +13,6 @@ function App() {
       <div className="my-20 text-white">
         <Cards />
       </div>
-
       <Back />
     </div>
   );
