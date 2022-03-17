@@ -5,9 +5,9 @@ import image from "../image/back1.png";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
   const [backs, setBacks] = useState([]);
-  const other = false;
+  const other = true;
   useEffect(() => {
-    const other = false;
+    const other = true;
     if (other) {
       axios
         .get(
