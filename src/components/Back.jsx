@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import back from "../json-data/back.json";
-import image from "../image/back1.png";
+import { JsonBack } from "../data/back";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
   const [backs, setBacks] = useState([]);
-  const other = true;
   useEffect(() => {
-    const other = true;
-    if (other) {
+    const isUseAPI = false;
+    if (isUseAPI) {
       axios
         .get(
           `https://us.api.blizzard.com/hearthstone/cardbacks/155-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
@@ -17,7 +15,7 @@ export const Back = () => {
           setBacks(res.data);
         });
     } else {
-      setBacks(back);
+      setBacks(JsonBack);
     }
   }, []);
 
@@ -26,9 +24,9 @@ export const Back = () => {
       <h1 className="text-center font-bold">CARD BACK</h1>
       <div className="res_card grid grid-cols-4">
         <div className="grid grid-cols-1 p-5">
-          <p className="py-5 text-center">{other ? backs.name : back.name}</p>
-          <p className="py-3">{other ? backs.text : back.text}</p>
-          <img src={other ? backs.image : image} alt="" />
+          <p className="py-5 text-center">{backs.name}</p>
+          <p className="py-3">{backs.text}</p>
+          <img src={backs.image} alt="" />
         </div>
       </div>
     </div>
