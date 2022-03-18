@@ -22,7 +22,7 @@ export const Cards = () => {
     <div className="grid grid-cols-7">
       <div className="text-center shadow-xl text-xl col-span-2">
         <div className="sticky top-0">
-          <p className="py-10 text-2xl">検索欄</p>
+          <p className="py-10 text-2xl">検索フォーム</p>
           <div className="p-3">
             攻撃力：
             <input
