@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { JsonCards } from "../data/cards";
 import axios from "axios";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Cards = () => {
@@ -6,15 +8,22 @@ export const Cards = () => {
   const [attack, setAttack] = useState(1);
   const [health, setHealth] = useState(2);
   const [types, setTypes] = useState("minion");
-
+  const url = useLocation().search;
+  const query = new URLSearchParams(url);
+  console.log(query.get("card1"));
   useEffect(() => {
-    axios
-      .get(
-        `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order (deprecated)=asc&access_token=${APIKEY}`
-      )
-      .then((res) => {
-        setCards(res.data.cards);
-      });
+    if (query.get("card") === null) {
+      axios
+        .get(
+          `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order (deprecated)=asc&access_token=${APIKEY}`
+        )
+        .then((res) => {
+          setCards(res.data.cards);
+        });
+    } else {
+      console.log("nullではない");
+      setCards(JsonCards.cards);
+    }
   }, [attack, health, types]);
   console.log(`攻撃力：${attack}  体力：${health}  種類：${types}`);
 
