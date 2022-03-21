@@ -10,9 +10,9 @@ export const Cards = () => {
   const [types, setTypes] = useState("minion");
   const url = useLocation().search;
   const query = new URLSearchParams(url);
-  console.log(query.get("card1"));
+  console.log(query.get("mockdata"));
   useEffect(() => {
-    if (query.get("card") === null) {
+    if (query.get("mockdata") === null) {
       axios
         .get(
           `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order (deprecated)=asc&access_token=${APIKEY}`
