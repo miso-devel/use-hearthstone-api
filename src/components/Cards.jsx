@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { JsonCards } from "../data/cards";
 import axios from "axios";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
@@ -10,12 +10,12 @@ export const Cards = () => {
   const [types, setTypes] = useState("minion");
   const url = useLocation().search;
   const query = new URLSearchParams(url);
-  console.log(query.get("mockdata"));
+
   useEffect(() => {
     if (query.get("mockdata") === null) {
       axios
         .get(
-          `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order (deprecated)=asc&access_token=${APIKEY}`
+          `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order=asc&access_token=${APIKEY}`
         )
         .then((res) => {
           setCards(res.data.cards);
@@ -24,47 +24,35 @@ export const Cards = () => {
       console.log("nullではない");
       setCards(JsonCards.cards);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attack, health, types]);
-  console.log(`攻撃力：${attack}  体力：${health}  種類：${types}`);
+
+  const secCard = (paramsName, type, param, setParams) => {
+    return (
+      <div className="p-3">
+        {paramsName}:
+        <input
+          className=" rounded-md text-center text-black"
+          value={param}
+          type={type}
+          onChange={setParams}
+          placeholder={paramsName}
+          required
+        />
+      </div>
+    );
+  };
 
   return (
     <div className="grid grid-cols-7">
       <div className="text-center shadow-xl text-xl col-span-2">
         <div className="sticky top-0">
           <p className="py-10 text-2xl">検索フォーム</p>
-          <div className="p-3">
-            攻撃力：
-            <input
-              className=" rounded-md text-center text-black"
-              value={attack}
-              type="number"
-              onChange={(e) => setAttack(e.target.value)}
-              placeholder="攻撃力"
-              required
-            />
-          </div>
-          <div className="p-3">
-            体力：
-            <input
-              className=" rounded-md text-center text-black"
-              value={health}
-              type="number"
-              onChange={(e) => setHealth(e.target.value)}
-              placeholder="体力"
-              required
-            />
-          </div>
-          <div className="p-3">
-            種類：
-            <input
-              className=" rounded-md text-center text-black"
-              value={types}
-              type="text"
-              onChange={(e) => setTypes(e.target.value)}
-              placeholder="種類"
-              required
-            />
-          </div>
+          {secCard("攻撃力", "number", attack, (e) =>
+            setAttack(e.target.value)
+          )}
+          {secCard("体力", "number", health, (e) => setHealth(e.target.value))}
+          {secCard("種類", "text", types, (e) => setTypes(e.target.value))}
         </div>
       </div>
 
@@ -74,7 +62,6 @@ export const Cards = () => {
             <div className="grid grid-cols-1 p-5" key={c.id}>
               <p className="py-5 text-center">{c.name}</p>
               <img src={c.image} alt="" />
-              <p className="py-3"></p>
             </div>
           );
         })}

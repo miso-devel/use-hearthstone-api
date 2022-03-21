@@ -5,8 +5,8 @@ const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
   const [backs, setBacks] = useState([]);
   useEffect(() => {
-    const isUseAPI = false;
-    if (isUseAPI) {
+    const isActiveAPI = false;
+    if (isActiveAPI) {
       axios
         .get(
           `https://us.api.blizzard.com/hearthstone/cardbacks/155-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
