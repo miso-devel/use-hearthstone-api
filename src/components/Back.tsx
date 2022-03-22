@@ -1,11 +1,20 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { JsonBack } from "../data/back";
+
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
-  const [backs, setBacks] = useState([]);
+  interface JsonBacks {
+    id: number;
+    text: string;
+    name: string;
+    image: any;
+  }
+
+  const [backs, setBacks] = useState<JsonBacks>();
+
   useEffect(() => {
-    const isActiveAPI = false;
+    const isActiveAPI: boolean = false;
     if (isActiveAPI) {
       axios
         .get(
@@ -15,9 +24,12 @@ export const Back = () => {
           setBacks(res.data);
         });
     } else {
-      setBacks(JsonBack);
+      setBacks(() => JsonBack);
     }
   }, []);
+
+  console.log(backs);
+  console.log(JsonBack);
 
   return (
     <div className="m-10">
