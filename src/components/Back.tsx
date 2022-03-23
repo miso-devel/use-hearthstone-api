@@ -4,32 +4,35 @@ import { JsonBack } from "../data/back";
 
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 export const Back = () => {
-  interface JsonBacks {
+  interface JsonBackType {
     id: number;
     text: string;
     name: string;
     image: any;
   }
-
-  const [backs, setBacks] = useState<JsonBacks>();
-
+  const initial = {
+    id: 0,
+    text: "",
+    name: "",
+    image: "",
+  };
+  const [backs, setBacks] = useState<JsonBackType>(initial);
   useEffect(() => {
-    const isActiveAPI: boolean = false;
+    const isActiveAPI: boolean = true;
     if (isActiveAPI) {
       axios
         .get(
-          `https://us.api.blizzard.com/hearthstone/cardbacks/155-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
+          `https://us.api.blizzard.com/hearthstone/cardbacks/153-pizza-stone?locale=ja_JP&access_token=${APIKEY}`
         )
-        .then((res) => {
+        .then((res: any) => {
           setBacks(res.data);
+          console.log("useEffect");
         });
     } else {
-      setBacks(() => JsonBack);
+      setBacks(JsonBack);
+      console.log("setされました");
     }
   }, []);
-
-  console.log(backs);
-  console.log(JsonBack);
 
   return (
     <div className="m-10">
