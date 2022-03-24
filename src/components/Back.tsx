@@ -27,6 +27,7 @@ export const Back = () => {
         .then((res: any) => {
           setBacks(res.data);
           console.log("useEffect");
+          console.log(res.data);
         });
     } else {
       setBacks(JsonBack);
