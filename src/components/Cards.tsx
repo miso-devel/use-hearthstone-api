@@ -57,11 +57,9 @@ export const Cards = () => {
           `https://us.api.blizzard.com/hearthstone/cards?locale=ja_JP&attack=${attack}&health=${health}&collectible=1&type=${types}&gameMode=constructed&page=1&pageSize=100&sort=name%3Aasc&order=asc&access_token=${APIKEY}`
         )
         .then((res) => {
-          setCards(res.data.cards);
-          console.log(res.data.cards)
+          setCards(res.data);
         });
     } else {
-      console.log("nullではない");
       setCards(JsonCards);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +80,6 @@ export const Cards = () => {
       </div>
     );
   };
-  console.log(cards)
 
   return (
     <div className="grid grid-cols-7">
@@ -98,7 +95,7 @@ export const Cards = () => {
       </div>
 
       <div className="res_card grid grid-cols-6 m-5 col-span-5">
-        {cards.cards.map((c) => {
+        {(cards.cards).map((c:any) => {
           return (
             <div className="grid grid-cols-1 p-5" key={c.id}>
               <p className="py-5 text-center">{c.name}</p>
