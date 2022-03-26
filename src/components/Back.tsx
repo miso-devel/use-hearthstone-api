@@ -3,19 +3,19 @@ import axios from "axios";
 import { JsonBack } from "../data/back";
 
 const APIKEY = process.env.React_APP_CARD_API_KEY;
+interface JsonBackType {
+  id: number;
+  text: string;
+  name: string;
+  image: any;
+}
+const initial = {
+  id: 0,
+  text: "",
+  name: "",
+  image: "",
+};
 export const Back = () => {
-  interface JsonBackType {
-    id: number;
-    text: string;
-    name: string;
-    image: any;
-  }
-  const initial = {
-    id: 0,
-    text: "",
-    name: "",
-    image: "",
-  };
   const [backs, setBacks] = useState<JsonBackType>(initial);
   useEffect(() => {
     const isActiveAPI: boolean = true;
