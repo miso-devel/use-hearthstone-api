@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { JsonBack } from "../data/back";
+import { JsonBack } from "../../data/back";
 
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 interface JsonBackType {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { JsonCards } from "../data/cards";
+import { JsonCards } from "../../data/cards";
 import axios, { AxiosResponse } from "axios";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
 interface JsonCardType {

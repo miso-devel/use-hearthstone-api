@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+// jest
+test("ヘッダーがrenderされてるか", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText("HEARTH STONE CARD SEARCHER");
   expect(linkElement).toBeInTheDocument();
 });

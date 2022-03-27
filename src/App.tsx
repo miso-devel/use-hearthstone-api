@@ -1,6 +1,6 @@
 import "./App.css";
-import { Back } from "./components/Back";
-import { Cards } from "./components/Cards";
+import { Back } from "./components/Back/Back";
+import { Cards } from "./components/Card/Cards";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
