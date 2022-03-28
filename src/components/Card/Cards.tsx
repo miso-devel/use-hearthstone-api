@@ -43,14 +43,35 @@ const initial = {
   card_count: 0,
   page: 0,
 };
+
+const secCard = (
+  paramsName: string,
+  type: string,
+  param: number | string,
+  setParams: any
+) => {
+  return (
+    <div className="p-3">
+      {paramsName}:
+      <input
+        className=" rounded-md text-center text-black"
+        value={param}
+        type={type}
+        onChange={setParams}
+        placeholder={paramsName}
+        required
+      />
+    </div>
+  );
+};
 export const Cards = () => {
   // setStateされるのは<>の型でのみ？？
   const [cards, setCards] = useState<JsonCardType>(initial);
   const [attack, setAttack] = useState<number>(1);
   const [health, setHealth] = useState<number>(2);
   const [types, setTypes] = useState<string>("minion");
-  const url = useLocation().search;
-  const query = new URLSearchParams(url);
+  const url: any = useLocation().search;
+  const query: any = new URLSearchParams(url);
 
   useEffect(() => {
     if (query.get("mockdata") === null) {
@@ -66,27 +87,6 @@ export const Cards = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attack, health, types]);
-
-  const secCard = (
-    paramsName: string,
-    type: string,
-    param: number | string,
-    setParams: any
-  ) => {
-    return (
-      <div className="p-3">
-        {paramsName}:
-        <input
-          className=" rounded-md text-center text-black"
-          value={param}
-          type={type}
-          onChange={setParams}
-          placeholder={paramsName}
-          required
-        />
-      </div>
-    );
-  };
 
   return (
     <div className="grid grid-cols-7">

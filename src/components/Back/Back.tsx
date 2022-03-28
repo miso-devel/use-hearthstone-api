@@ -11,14 +11,14 @@ interface JsonBackType {
 }
 const initial = {
   id: 0,
-  text: "",
-  name: "",
-  image: "",
+  text: "initial text",
+  name: "initial name",
+  image: "a",
 };
 export const Back = () => {
   const [backs, setBacks] = useState<JsonBackType>(initial);
   useEffect(() => {
-    const isActiveAPI: boolean = true;
+    const isActiveAPI: boolean = false;
     if (isActiveAPI) {
       axios
         .get(
@@ -26,12 +26,9 @@ export const Back = () => {
         )
         .then((res: any) => {
           setBacks(res.data);
-          console.log("useEffect");
-          console.log(res.data);
         });
     } else {
       setBacks(JsonBack);
-      console.log("setされました");
     }
   }, []);
 
