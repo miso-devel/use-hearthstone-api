@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Back } from "../Back";
+import App from "../../../App";
 
 // debug()をtest外に出すとrenderが2回されたことになってscreen.getByText("CARD BACK")をしたときにテストが失敗する
 

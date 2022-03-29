@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { JsonCards } from "../../data/cards";
 import axios, { AxiosResponse } from "axios";
 const APIKEY = process.env.React_APP_CARD_API_KEY;
@@ -70,8 +69,8 @@ export const Cards = () => {
   const [attack, setAttack] = useState<number>(1);
   const [health, setHealth] = useState<number>(2);
   const [types, setTypes] = useState<string>("minion");
-  const url: any = useLocation().search;
-  const query: any = new URLSearchParams(url);
+  const url = new URL(window.location.href).search;
+  const query = new URLSearchParams(url);
 
   useEffect(() => {
     if (query.get("mockdata") === null) {
