@@ -1,7 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Cards } from "../Cards";
-import App from "../../../App";
 
 //   const url: any = useLocation().search;
 //   const query: any = new URLSearchParams(url);

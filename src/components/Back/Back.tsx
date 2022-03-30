@@ -33,7 +33,7 @@ export const Back = () => {
   }, []);
 
   return (
-    <div className="m-10">
+    <div className="">
       <h1 className="text-center font-bold">CARD BACK</h1>
       <div className="res_card grid grid-cols-4">
         <div className="grid grid-cols-1 p-5">
