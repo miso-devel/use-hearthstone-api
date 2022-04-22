@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`back component render 1`] = `
+<div
+  className=""
+>
+  <h1
+    className="text-center font-bold"
+  >
+    CARD BACK
+  </h1>
+  <div
+    className="res_card grid grid-cols-4"
+  >
+    <div
+      className="grid grid-cols-1 p-5"
+    >
+      <p
+        className="py-5 text-center"
+      >
+        initial name
+      </p>
+      <p
+        className="py-3"
+      >
+        initial text
+      </p>
+      <img
+        alt=""
+        src="a"
+      />
+    </div>
+  </div>
+</div>
+`;
